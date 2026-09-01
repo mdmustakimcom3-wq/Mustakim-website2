@@ -1,0 +1,3102 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mustakim</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+   <style>
+
+        /* =========================
+           BASIC RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Noto Sans Bengali", sans-serif;
+            background: #020b1c;
+            color: white;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background: rgba(2, 11, 28, 0.92);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .navbar {
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 25px;
+            font-weight: 800;
+            color: #2997ff;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            border: 2px solid #2997ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        .nav-menu a {
+            font-size: 14px;
+            color: #ddd;
+            transition: .3s;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #2997ff;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg,#1683ff,#2367e8);
+            padding: 11px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            box-shadow: 0 0 20px rgba(35,103,232,.35);
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 600px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+
+            background:
+                radial-gradient(circle at 20% 40%, rgba(0,93,255,.18), transparent 30%),
+                radial-gradient(circle at 80% 30%, rgba(0,140,255,.12), transparent 35%);
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border: 1px solid rgba(0,140,255,.15);
+            border-radius: 50%;
+            left: -250px;
+            top: 50px;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+
+        /* PROFILE */
+
+        .profile-area {
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .profile-circle {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            box-shadow:
+                0 0 30px rgba(0,145,255,.4),
+                0 0 80px rgba(0,145,255,.15);
+
+            animation: floatProfile 4s ease-in-out infinite;
+        }
+
+        .profile-circle::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+
+            background: linear-gradient(
+                135deg,
+                #00aaff,
+                #164eff,
+                #8b5cff,
+                #00d9ff
+            );
+
+            animation: rotateBorder 5s linear infinite;
+            z-index: 0;
+        }
+
+        .profile-inner {
+            position: relative;
+            z-index: 1;
+            width: calc(100% - 16px);
+            height: calc(100% - 16px);
+            border-radius: 50%;
+            background: #071529;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+        }
+
+        .profile-inner i {
+            font-size: 100px;
+            color: #278fff;
+        }
+
+        .profile-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            transition: transform .4s ease;
+        }
+
+        .profile-inner:hover img {
+            transform: scale(1.08);
+        }
+
+        @keyframes rotateBorder {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes floatProfile {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-14px);
+            }
+        }
+
+
+        /* FLOATING ICON */
+
+        .float-icon {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .icon-html {
+            right: 55px;
+            top: 25px;
+            background: #ff6535;
+        }
+
+        .icon-css {
+            right: 10px;
+            top: 160px;
+            background: #2779ff;
+        }
+
+        .icon-js {
+            left: 30px;
+            bottom: 30px;
+            background: #e8b800;
+            color: #111;
+        }
+
+        .icon-code {
+            left: 50px;
+            top: 50px;
+            background: #4d4cff;
+        }
+
+        @keyframes float {
+            0%,100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+
+        /* HERO TEXT */
+
+        .hello {
+            display: inline-block;
+            border: 1px solid #1587ff;
+            padding: 5px 18px;
+            border-radius: 30px;
+            color: #31a0ff;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 65px;
+            line-height: 1.2;
+            margin-bottom: 5px;
+        }
+
+        .hero h2 {
+            font-size: 30px;
+            color: #2495ff;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            color: #c5cbd5;
+            max-width: 600px;
+            margin-bottom: 25px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 18px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: .3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg,#168cff,#3b61ff);
+            box-shadow: 0 10px 30px rgba(0,120,255,.25);
+        }
+
+        .btn-outline {
+            border: 1px solid #aaa;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+
+        /* =========================
+           CONTACT BAR
+        ========================= */
+
+        .contact-bar {
+            margin-top: -30px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .contact-box {
+            background: rgba(15,31,55,.85);
+            border: 1px solid rgba(255,255,255,.15);
+            border-radius: 15px;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 20px;
+            backdrop-filter: blur(15px);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            border-right: 1px solid rgba(255,255,255,.15);
+        }
+
+        .contact-item:last-child {
+            border: none;
+        }
+
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(0,140,255,.15);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #2598ff;
+        }
+
+        .contact-item small {
+            color: #aaa;
+            display: block;
+        }
+
+
+        /* =========================
+           SECTION
+        ========================= */
+
+        section {
+            padding: 90px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title span {
+            color: #1591ff;
+            font-size: 15px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            margin-top: 5px;
+        }
+
+
+        /* =========================
+           SERVICES
+        ========================= */
+
+        .services {
+            background: #031126;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 20px;
+        }
+
+        .service-card {
+            background: linear-gradient(
+                145deg,
+                #10213c,
+                #071529
+            );
+
+            border: 1px solid rgba(255,255,255,.15);
+            border-radius: 14px;
+            padding: 35px 20px;
+            text-align: center;
+            transition: .3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: #168cff;
+            box-shadow: 0 20px 40px rgba(0,110,255,.12);
+        }
+
+        .service-icon {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 27px;
+            background: linear-gradient(135deg,#198eff,#654cff);
+        }
+
+        .service-card:nth-child(2) .service-icon {
+            background: linear-gradient(135deg,#914cff,#c342ff);
+        }
+
+        .service-card:nth-child(3) .service-icon {
+            background: linear-gradient(135deg,#00a987,#0acb8a);
+        }
+
+        .service-card:nth-child(4) .service-icon {
+            background: linear-gradient(135deg,#ff9d20,#ff6325);
+        }
+
+        .service-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: #aeb7c6;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .service-card a {
+            color: #168eff;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about {
+            background: #f5f7fb;
+            color: #152033;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-photo {
+            position: relative;
+            width: 330px;
+            height: 400px;
+            margin: auto;
+
+            padding: 8px;
+            border-radius: 35px;
+
+            background: linear-gradient(
+                135deg,
+                #00eaff,
+                #0066ff,
+                #7b00ff,
+                #00eaff
+            );
+            background-size: 300% 300%;
+            animation: photoGradient 5s ease infinite;
+
+            box-shadow:
+                0 0 25px rgba(0, 217, 255, 0.5),
+                0 0 60px rgba(0, 102, 255, 0.25);
+        }
+
+        .about-photo img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            border-radius: 28px;
+            border: 4px solid #06152d;
+        }
+
+        .about-photo::before {
+            content: "";
+            position: absolute;
+            inset: -10px;
+            border: 2px solid rgba(0, 234, 255, 0.5);
+            border-radius: 40px;
+            animation: photoRotate 6s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes photoGradient {
+            0% {
+                background-position: 10% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 10% 50%;
+            }
+        }
+
+        @keyframes photoRotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .about-text span {
+            color: #287cff;
+        }
+
+        .about-text h2 {
+            font-size: 40px;
+            margin: 8px 0 15px;
+        }
+
+        .about-text h2 b {
+            color: #287cff;
+        }
+
+        .about-text p {
+            color: #687285;
+            margin-bottom: 20px;
+        }
+
+        .skills {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .skills li {
+            margin: 7px 0;
+        }
+
+        .skills i {
+            color: #287cff;
+            margin-right: 8px;
+        }
+
+        .about-image {
+            height: 330px;
+            border-radius: 15px;
+            background:
+                linear-gradient(135deg,#0c1729,#1a385b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-image i {
+            font-size: 100px;
+            color: #2895ff;
+        }
+
+
+        /* =========================
+           STATS
+        ========================= */
+
+        .stats {
+            background: #06172e;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 15px;
+        }
+
+        .stat {
+            border: 1px solid rgba(30,145,255,.35);
+            padding: 22px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat i {
+            font-size: 30px;
+            color: #258fff;
+            margin-bottom: 5px;
+        }
+
+        .stat h3 {
+            font-size: 30px;
+            color: #278fff;
+        }
+
+        .stat p {
+            color: #bbb;
+        }
+
+
+        /* =========================
+           PROJECTS
+        ========================= */
+
+        .projects {
+            background: #020d20;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 18px;
+        }
+
+        .project-card {
+            background: #102039;
+            border: 1px solid rgba(255,255,255,.12);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: .3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+            border-color: #238eff;
+        }
+
+        .project-image {
+            height: 160px;
+            background:
+                linear-gradient(135deg,#172d4e,#07182e);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .project-image i {
+            font-size: 55px;
+            color: #238eff;
+        }
+
+        .project-content {
+            padding: 15px;
+        }
+
+        .project-content h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .project-btn {
+            display: inline-block;
+            background: #1688ff;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact-section {
+            background: linear-gradient(
+                135deg,
+                #071a35,
+                #020b1c
+            );
+        }
+
+        .contact-wrapper {
+            max-width: 750px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .contact-wrapper h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .contact-wrapper p {
+            color: #aeb7c4;
+            margin-bottom: 25px;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #020916;
+            padding: 60px 0 20px;
+            border-top: 1px solid rgba(255,255,255,.1);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        footer h3 {
+            margin-bottom: 15px;
+        }
+
+        footer p,
+        footer li {
+            color: #9da8b8;
+            font-size: 14px;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer li {
+            margin: 7px 0;
+        }
+
+        footer li a:hover {
+            color: #2692ff;
+        }
+
+        .social {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .social a {
+            width: 35px;
+            height: 35px;
+            background: #10233e;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #2996ff;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,.1);
+            margin-top: 35px;
+            padding-top: 20px;
+            color: #788396;
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           WHATSAPP BUTTON
+        ========================= */
+
+        .whatsapp {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            width: 58px;
+            height: 58px;
+            background: #25d366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 27px;
+            z-index: 1000;
+            box-shadow: 0 5px 25px rgba(37,211,102,.35);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37,211,102,.5);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(37,211,102,0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37,211,102,0);
+            }
+        }
+
+
+        /* =========================
+           SCROLL TOP
+        ========================= */
+
+        .top-btn {
+            position: fixed;
+            right: 25px;
+            bottom: 95px;
+            width: 42px;
+            height: 42px;
+            background: #1688ff;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 999;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media(max-width: 950px) {
+
+            .nav-menu {
+                position: absolute;
+                top: 75px;
+                left: 0;
+                width: 100%;
+                background: #06142a;
+
+                display: none;
+                flex-direction: column;
+                text-align: center;
+                padding: 25px;
+            }
+
+            .nav-menu.show {
+                display: flex;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-btn {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 60px 0;
+            }
+
+            .profile-area {
+                order: 1;
+            }
+
+            .hero-text {
+                order: 2;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .contact-box {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contact-item:nth-child(2) {
+                border: none;
+            }
+
+            .service-grid,
+            .project-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+
+        @media(max-width: 600px) {
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            .hero h2 {
+                font-size: 23px;
+            }
+
+            .profile-circle {
+                width: 250px;
+                height: 250px;
+            }
+
+            .float-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .contact-box {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-item {
+                border: none;
+            }
+
+            .service-grid,
+            .project-grid,
+            .stats-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-text h2 {
+                font-size: 32px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                justify-content: center;
+            }
+
+            section {
+                padding: 65px 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="container navbar">
+
+        <a href="#home" class="logo">
+
+            <span class="logo-icon">
+                <i class="fa-solid fa-code"></i>
+            </span>
+
+            মোস্তাকিম
+
+        </a>
+
+
+        <ul class="nav-menu" id="navMenu">
+
+            <li>
+                <a href="#home" class="active">হোম</a>
+            </li>
+
+            <li>
+                <a href="#services">সেবা সমূহ</a>
+            </li>
+
+            <li>
+                <a href="#about">আমার সম্পর্কে</a>
+            </li>
+
+            <li>
+                <a href="#projects">প্রজেক্ট</a>
+            </li>
+
+            <li>
+                <a href="#contact">যোগাযোগ</a>
+            </li>
+            
+			<li>
+			    <a href="#Registration">রেজিস্ট্রেশন</a>
+			</li>
+       
+	   </ul>
+		
+
+
+        <a href="#contact" class="nav-btn">
+            <i class="fa-solid fa-phone"></i>
+            যোগাযোগ করুন
+        </a>
+
+        <div class="menu-btn" id="menuBtn">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="home">
+
+    <div class="container hero-content">
+
+
+        <!-- PROFILE -->
+
+        <div class="profile-area">
+
+    <div class="profile-circle">
+
+        <div class="profile-inner">
+
+            <img src="images/mustakim.jpg" alt="মোস্তাকিম">
+
+        </div>
+
+    </div>
+
+    <div class="float-icon icon-html">
+        HTML
+    </div>
+
+    <div class="float-icon icon-css">
+        CSS
+    </div>
+
+    <div class="float-icon icon-js">
+        JS
+    </div>
+
+    <div class="float-icon icon-code">
+        <i class="fa-solid fa-code"></i>
+    </div>
+
+
+
+        </div>
+
+
+
+        <!-- TEXT -->
+
+        <div class="hero-text">
+
+            <span class="hello">
+                হ্যালো, আমি
+            </span>
+
+            <h1>
+                মোস্তাকিম
+            </h1>
+
+            <h2>
+                ওয়েব ডেভেলপার
+            </h2>
+
+            <p>
+                আমি একজন প্রফেশনাল ওয়েব ডেভেলপার।
+                আধুনিক, সুন্দর এবং ব্যবহারবান্ধব ওয়েবসাইট তৈরি করি।
+                আপনার ব্যবসার জন্য আকর্ষণীয় ওয়েবসাইট তৈরি করতে আমি প্রস্তুত।
+            </p>
+
+
+            <div class="buttons">
+
+                <a href="#projects" class="btn btn-primary">
+                    আমার কাজ দেখুন
+                    <i class="fa-solid fa-eye"></i>
+                </a>
+
+                <a href="#contact" class="btn btn-outline">
+                    যোগাযোগ করুন
+                    <i class="fa-solid fa-paper-plane"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CONTACT BAR
+========================= -->
+
+<div class="contact-bar">
+
+    <div class="container contact-box">
+
+
+        <div class="contact-item">
+
+            <div class="contact-icon">
+                <i class="fa-solid fa-phone"></i>
+            </div>
+
+            <div>
+                <small>কল করুন</small>
+                <strong>01786938377</strong>
+            </div>
+
+        </div>
+
+
+        <div class="contact-item">
+
+            <div class="contact-icon">
+                <i class="fa-brands fa-whatsapp"></i>
+            </div>
+
+            <div>
+                <small>WhatsApp</small>
+                <strong>01786938377</strong>
+            </div>
+
+        </div>
+
+
+        <div class="contact-item">
+
+            <div class="contact-icon">
+                <i class="fa-solid fa-location-dot"></i>
+            </div>
+
+            <div>
+                <small>ঠিকানা</small>
+                <strong>নেত্রকোণা সদর</strong>
+            </div>
+
+        </div>
+
+
+        <div class="contact-item">
+
+            <div class="contact-icon">
+                <i class="fa-brands fa-facebook"></i>
+            </div>
+
+            <div>
+                <small>Facebook</small>
+                <strong>Follow Me</strong>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     SERVICES
+========================= -->
+
+<section class="services" id="services">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>আমার সেবা সমূহ</span>
+
+            <h2>
+                যে সেবা গুলো আমি দিয়ে থাকি
+            </h2>
+
+        </div>
+
+
+        <div class="service-grid">
+
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+
+                <h3>
+                    কাস্টম ওয়েবসাইট
+                </h3>
+
+                <p>
+                    আপনার প্রয়োজন অনুযায়ী
+                    সুন্দর এবং আধুনিক ওয়েবসাইট তৈরি।
+                </p>
+
+                <a href="#contact">
+                    বিস্তারিত দেখুন →
+                </a>
+
+            </div>
+
+
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+
+                <h3>
+                    ই-কমার্স ওয়েবসাইট
+                </h3>
+
+                <p>
+                    আপনার ব্যবসার জন্য প্রফেশনাল
+                    অনলাইন শপ তৈরি।
+                </p>
+
+                <a href="#contact">
+                    বিস্তারিত দেখুন →
+                </a>
+
+            </div>
+
+
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                </div>
+
+                <h3>
+                    রেসপনসিভ ডিজাইন
+                </h3>
+
+                <p>
+                    মোবাইল, ট্যাব এবং কম্পিউটারে
+                    সুন্দরভাবে কাজ করবে।
+                </p>
+
+                <a href="#contact">
+                    বিস্তারিত দেখুন →
+                </a>
+
+            </div>
+
+
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    <i class="fa-solid fa-gauge-high"></i>
+                </div>
+
+                <h3>
+                    ওয়েবসাইট স্পিড অপটিমাইজ
+                </h3>
+
+                <p>
+                    ওয়েবসাইট দ্রুত লোড হওয়ার জন্য
+                    প্রয়োজনীয় অপটিমাইজেশন।
+                </p>
+
+                <a href="#contact">
+                    বিস্তারিত দেখুন →
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section class="about" id="about">
+
+    <div class="container about-grid">
+
+        <div class="about-photo">
+            <img src="images/about.jpeg" alt="মোস্তাকিম">
+        </div>
+
+        <div class="about-text">
+
+            <span>
+                আমার সম্পর্কে
+            </span>
+
+            <h2>
+                আমি <b>মোস্তাকিম</b>
+            </h2>
+
+            <p>
+                আমি একজন ওয়েব ডেভেলপার।
+                আধুনিক ডিজাইন এবং সুন্দর ইউজার এক্সপেরিয়েন্সের
+                মাধ্যমে ওয়েবসাইট তৈরি করতে পছন্দ করি।
+            </p>
+
+
+            <ul class="skills">
+
+                <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    100% ক্লায়েন্ট সন্তুষ্টি
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    সময়মতো প্রজেক্ট ডেলিভারি
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    আধুনিক ও ইউনিক ডিজাইন
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    প্রয়োজনীয় সাপোর্ট
+                </li>
+
+            </ul>
+
+
+            <a href="#contact" class="btn btn-primary">
+                যোগাযোগ করুন
+                <i class="fa-solid fa-user"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     STATS
+========================= -->
+
+<section class="stats">
+
+    <div class="container stats-grid">
+
+
+        <div class="stat">
+
+            <i class="fa-solid fa-face-smile"></i>
+
+            <h3 class="counter">
+                50+
+            </h3>
+
+            <p>
+                সন্তুষ্ট ক্লায়েন্ট
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <i class="fa-solid fa-folder"></i>
+
+            <h3 class="counter">
+                70+
+            </h3>
+
+            <p>
+                সম্পন্ন প্রজেক্ট
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <i class="fa-regular fa-clock"></i>
+
+            <h3>
+                3+
+            </h3>
+
+            <p>
+                বছরের অভিজ্ঞতা
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <i class="fa-solid fa-trophy"></i>
+
+            <h3>
+                100%
+            </h3>
+
+            <p>
+                ক্লায়েন্ট সন্তুষ্টি
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     PROJECTS
+========================= -->
+
+<section class="projects" id="projects">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>
+                আমার সাম্প্রতিক কাজ
+            </span>
+
+            <h2>
+                কিছু সাম্প্রতিক প্রজেক্ট
+            </h2>
+
+        </div>
+
+
+        <div class="project-grid">
+
+
+            <div class="project-card">
+
+                <div class="project-image">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+
+                <div class="project-content">
+
+                    <h3>
+                        E-commerce Website
+                    </h3>
+
+                    <a href="#" class="project-btn">
+                        View
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="project-card">
+
+                <div class="project-image">
+                    <i class="fa-solid fa-building"></i>
+                </div>
+
+                <div class="project-content">
+
+                    <h3>
+                        Business Website
+                    </h3>
+
+                    <a href="#" class="project-btn">
+                        View
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="project-card">
+
+                <div class="project-image">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+
+                <div class="project-content">
+
+                    <h3>
+                        Portfolio Website
+                    </h3>
+
+                    <a href="#" class="project-btn">
+                        View
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="project-card">
+
+                <div class="project-image">
+                    <i class="fa-solid fa-blog"></i>
+                </div>
+
+                <div class="project-content">
+
+                    <h3>
+                        Blog Website
+                    </h3>
+
+                    <a href="#" class="project-btn">
+                        View
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section class="contact-section" id="contact">
+
+    <div class="container contact-wrapper">
+
+        <h2>
+            আপনার প্রজেক্ট নিয়ে কথা বলি
+        </h2>
+
+        <p>
+            আপনার ব্যবসার জন্য একটি সুন্দর ও প্রফেশনাল ওয়েবসাইট
+            প্রয়োজন হলে এখনই যোগাযোগ করুন।
+        </p>
+
+
+        <div class="contact-buttons">
+
+            <a
+                href="tel:01786938377"
+                class="btn btn-primary">
+
+                <i class="fa-solid fa-phone"></i>
+
+                কল করুন
+
+            </a>
+
+
+            <a
+                href="https://wa.me/8801786938377"
+                target="_blank"
+                class="btn btn-outline">
+
+                <i class="fa-brands fa-whatsapp"></i>
+
+                WhatsApp
+
+            </a>
+
+
+            <a
+                href="https://www.facebook.com/share/1EzbPJfXKu/"
+                target="_blank"
+                class="btn btn-outline">
+
+                <i class="fa-brands fa-facebook"></i>
+
+                Facebook
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="container footer-grid">
+
+
+        <div>
+
+            <div class="logo">
+                <span class="logo-icon">
+                    <i class="fa-solid fa-code"></i>
+                </span>
+
+                মোস্তাকিম
+            </div>
+
+            <br>
+
+            <p>
+                আমি একজন প্রফেশনাল ওয়েব ডেভেলপার।
+                আপনার ব্যবসার জন্য আধুনিক ওয়েবসাইট তৈরি করি।
+            </p>
+
+
+            <div class="social">
+
+                <a href="#">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+
+                <a href="https://wa.me/8801786938377">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div>
+
+            <h3>
+                দ্রুত লিংক
+            </h3>
+
+            <ul>
+
+                <li>
+                    <a href="#home">হোম</a>
+                </li>
+
+                <li>
+                    <a href="#services">সেবা সমূহ</a>
+                </li>
+
+                <li>
+                    <a href="#about">আমার সম্পর্কে</a>
+                </li>
+
+                <li>
+                    <a href="#projects">প্রজেক্ট</a>
+                </li>
+
+                <li>
+                    <a href="#contact">যোগাযোগ</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+
+        <div>
+
+            <h3>
+                আমার সেবা
+            </h3>
+
+            <ul>
+
+                <li>
+                    কাস্টম ওয়েবসাইট
+                </li>
+
+                <li>
+                    ই-কমার্স ওয়েবসাইট
+                </li>
+
+                <li>
+                    রেসপনসিভ ডিজাইন
+                </li>
+
+                <li>
+                    স্পিড অপটিমাইজ
+                </li>
+
+            </ul>
+
+        </div>
+
+
+
+        <div>
+
+            <h3>
+                যোগাযোগ
+            </h3>
+
+            <ul>
+
+                <li>
+                    <i class="fa-solid fa-phone"></i>
+                    01786938377
+                </li>
+
+                <li>
+                    <i class="fa-brands fa-whatsapp"></i>
+                    01786938377
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-location-dot"></i>
+                    নেত্রকোণা সদর
+                </li>
+
+                <li>
+                    <i class="fa-brands fa-facebook"></i>
+                    Facebook Profile
+                </li>
+
+            </ul>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="container copyright">
+
+        © 2026 মোস্তাকিম | All Rights Reserved.
+        Designed with ❤️ by Mostakim
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================
+     FLOAT BUTTONS
+========================= -->
+
+<a
+    href="https://wa.me/8801786938377"
+    target="_blank"
+    class="whatsapp">
+
+    <i class="fa-brands fa-whatsapp"></i>
+
+</a>
+
+
+<div class="top-btn" id="topBtn">
+
+    <i class="fa-solid fa-arrow-up"></i>
+
+</div>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+    /* =========================
+       MOBILE MENU
+    ========================= */
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navMenu = document.getElementById("navMenu");
+
+    menuBtn.addEventListener("click", function () {
+
+        navMenu.classList.toggle("show");
+
+    });
+
+
+    /* =========================
+       CLOSE MOBILE MENU
+    ========================= */
+
+    document.querySelectorAll(".nav-menu a").forEach(function(link){
+
+        link.addEventListener("click", function(){
+
+            navMenu.classList.remove("show");
+
+        });
+
+    });
+
+
+    /* =========================
+       SCROLL TOP BUTTON
+    ========================= */
+
+    const topBtn = document.getElementById("topBtn");
+
+    window.addEventListener("scroll", function(){
+
+        if(window.scrollY > 400){
+
+            topBtn.style.display = "flex";
+
+        } else {
+
+            topBtn.style.display = "none";
+
+        }
+
+    });
+
+
+    topBtn.addEventListener("click", function(){
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
+
+
+    /* =========================
+       ACTIVE MENU
+    ========================= */
+
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-menu a");
+
+    window.addEventListener("scroll", function(){
+
+        let current = "";
+
+        sections.forEach(function(section){
+
+            const sectionTop = section.offsetTop - 100;
+
+            if(window.scrollY >= sectionTop){
+
+                current = section.getAttribute("id");
+
+            }
+
+        });
+
+
+        navLinks.forEach(function(link){
+
+            link.classList.remove("active");
+
+            if(link.getAttribute("href") === "#" + current){
+
+                link.classList.add("active");
+
+            }
+
+        });
+
+    });
+
+
+    /* =========================
+       COUNTER ANIMATION
+    ========================= */
+
+    const counters = document.querySelectorAll(".counter");
+
+    counters.forEach(function(counter){
+
+        let text = counter.innerText;
+
+        let number = parseInt(text);
+
+        let count = 0;
+
+        let interval = setInterval(function(){
+
+            count++;
+
+            counter.innerText = count + "+";
+
+            if(count >= number){
+
+                clearInterval(interval);
+
+            }
+
+        }, 25);
+
+    });
+
+
+</script>
+
+<!-- =====================================================
+     REGISTRATION FORM
+===================================================== -->
+
+<section id="Registration" class="registration-section">
+
+    <div class="registration-wrapper">
+
+        <!-- LEFT SIDE -->
+        <div class="registration-info">
+
+            <div class="info-content">
+
+                <div class="brand-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+
+                <h1>অর্ডার করুন</h1>
+
+                <p>
+                    আপনার সঠিক তথ্য দিয়ে রেজিস্ট্রেশন করুন
+                    এবং bKash অথবা Nagad-এর মাধ্যমে পেমেন্ট করুন।
+                </p>
+
+                <div class="info-item">
+                    <span>
+                        <i class="fa-solid fa-location-dot"></i>
+                    </span>
+                    <p>সারা বাংলাদেশে ডেলিভারি</p>
+                </div>
+
+                <div class="info-item">
+                    <span>
+                        <i class="fa-solid fa-map"></i>
+                    </span>
+                    <p>বাংলাদেশের ৬৪ জেলা</p>
+                </div>
+
+                <div class="info-item">
+                    <span>
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </span>
+                    <p>সহজ ও নিরাপদ রেজিস্ট্রেশন</p>
+                </div>
+
+                <div class="info-item">
+                    <span>
+                        <i class="fa-solid fa-phone"></i>
+                    </span>
+                    <p>যোগাযোগ: 01786938377</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+        <div class="registration-form-box">
+
+            <div class="form-header">
+
+                <div class="form-icon">
+                    <i class="fa-solid fa-user-plus"></i>
+                </div>
+
+                <div>
+                    <h2>Registration</h2>
+                    <p>আপনার তথ্য পূরণ করুন</p>
+                </div>
+
+            </div>
+
+
+            <form id="registrationForm">
+
+                <!-- PERSONAL INFORMATION -->
+
+                <div class="form-section-title">
+                    <i class="fa-solid fa-user"></i>
+                    ব্যক্তিগত তথ্য
+                </div>
+
+
+                <!-- NAME -->
+
+                <div class="form-group">
+
+                    <label>
+                        <i class="fa-solid fa-user"></i>
+                        আপনার নাম <span>*</span>
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-user"></i>
+
+                        <input
+                            type="text"
+                            id="customerName"
+                            placeholder="আপনার সম্পূর্ণ নাম"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- PHONE -->
+
+                <div class="form-group">
+
+                    <label>
+                        <i class="fa-solid fa-phone"></i>
+                        মোবাইল নম্বর <span>*</span>
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-phone"></i>
+
+                        <input
+                            type="tel"
+                            id="customerPhone"
+                            placeholder="01XXXXXXXXX"
+                            maxlength="11"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- ADDRESS -->
+
+                <div class="form-section-title">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    ডেলিভারি ঠিকানা
+
+                </div>
+
+
+                <!-- DIVISION -->
+
+                <div class="form-group">
+
+                    <label>
+                        <i class="fa-solid fa-map-location-dot"></i>
+                        বিভাগ <span>*</span>
+                    </label>
+
+                    <div class="select-box">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <select id="division" required>
+
+                            <option value="">
+                                -- বিভাগ নির্বাচন করুন --
+                            </option>
+
+                            <option value="ঢাকা">ঢাকা বিভাগ</option>
+                            <option value="চট্টগ্রাম">চট্টগ্রাম বিভাগ</option>
+                            <option value="রাজশাহী">রাজশাহী বিভাগ</option>
+                            <option value="খুলনা">খুলনা বিভাগ</option>
+                            <option value="বরিশাল">বরিশাল বিভাগ</option>
+                            <option value="সিলেট">সিলেট বিভাগ</option>
+                            <option value="রংপুর">রংপুর বিভাগ</option>
+                            <option value="ময়মনসিংহ">ময়মনসিংহ বিভাগ</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DISTRICT -->
+
+                <div class="form-group">
+
+                    <label>
+                        <i class="fa-solid fa-map"></i>
+                        জেলা <span>*</span>
+                    </label>
+
+                    <div class="select-box">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <select id="district" required disabled>
+
+                            <option value="">
+                                -- আগে বিভাগ নির্বাচন করুন --
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- THANA -->
+
+                <div class="form-group">
+
+                    <label>
+                        <i class="fa-solid fa-location-crosshairs"></i>
+                        উপজেলা / থানা <span>*</span>
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-location-crosshairs"></i>
+
+                        <input
+                            type="text"
+                            id="upazila"
+                            placeholder="উপজেলা / থানার নাম"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- VILLAGE -->
+
+                <div class="form-group">
+
+                    <label>
+                        <i class="fa-solid fa-map-pin"></i>
+                        গ্রাম / এলাকা <span>*</span>
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-map-pin"></i>
+
+                        <input
+                            type="text"
+                            id="village"
+                            placeholder="গ্রাম / এলাকার নাম"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- FULL ADDRESS -->
+
+                <div class="form-group">
+
+                    <label>
+                        <i class="fa-solid fa-house"></i>
+                        বিস্তারিত ঠিকানা <span>*</span>
+                    </label>
+
+                    <div class="textarea-box">
+
+                        <i class="fa-solid fa-house"></i>
+
+                        <textarea
+                            id="address"
+                            placeholder="বাড়ি নম্বর, রাস্তা, বাজার ইত্যাদি"
+                            required
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PAYMENT -->
+
+                <div class="form-section-title">
+
+                    <i class="fa-solid fa-credit-card"></i>
+
+                    পেমেন্ট করুন
+
+                </div>
+
+
+                <div class="payment-box">
+
+                    <div class="payment-title">
+
+                        <i class="fa-solid fa-money-bill-transfer"></i>
+
+                        নিচের যেকোনো একটি নম্বরে টাকা পাঠান
+
+                    </div>
+
+
+                    <!-- BKASH -->
+
+                    <div class="payment-method">
+
+                        <div class="payment-logo bkash-logo">
+                            bKash
+                        </div>
+
+                        <div class="payment-details">
+
+                            <strong>bKash</strong>
+
+                            <span>Personal Number</span>
+
+                            <b>01786938377</b>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            onclick="copyNumber('01786938377')">
+
+                            <i class="fa-regular fa-copy"></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- NAGAD -->
+
+                    <div class="payment-method">
+
+                        <div class="payment-logo nagad-logo">
+                            Nagad
+                        </div>
+
+                        <div class="payment-details">
+
+                            <strong>Nagad</strong>
+
+                            <span>Personal Number</span>
+
+                            <b>01786938377</b>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            onclick="copyNumber('01786938377')">
+
+                            <i class="fa-regular fa-copy"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- AMOUNT -->
+
+                <div class="form-group">
+
+                    <label>
+                        <i class="fa-solid fa-bangladeshi-taka-sign"></i>
+                        পেমেন্টের পরিমাণ <span>*</span>
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-bangladeshi-taka-sign"></i>
+
+                        <input
+                            type="number"
+                            id="amount"
+                            placeholder="যেমন: 500"
+                            min="1"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- PAYMENT METHOD -->
+
+                <div class="form-group">
+
+                    <label>
+                        <i class="fa-solid fa-wallet"></i>
+                        কোন মাধ্যমে পেমেন্ট করেছেন <span>*</span>
+                    </label>
+
+                    <div class="select-box">
+
+                        <i class="fa-solid fa-money-check-dollar"></i>
+
+                        <select id="paymentMethod" required>
+
+                            <option value="">
+                                -- পেমেন্ট মাধ্যম নির্বাচন করুন --
+                            </option>
+
+                            <option value="bKash">
+                                bKash
+                            </option>
+
+                            <option value="Nagad">
+                                Nagad
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TRANSACTION ID -->
+
+                <div class="form-group">
+
+                    <label>
+                        <i class="fa-solid fa-receipt"></i>
+                        Transaction ID <span>*</span>
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-receipt"></i>
+
+                        <input
+                            type="text"
+                            id="transactionId"
+                            placeholder="Transaction ID লিখুন"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- NOTICE -->
+
+                <div class="payment-note">
+
+                    <i class="fa-solid fa-circle-info"></i>
+
+                    <p>
+                        প্রথমে bKash অথবা Nagad নম্বরে টাকা পাঠান।
+                        এরপর Transaction ID লিখে রেজিস্ট্রেশন করুন।
+                    </p>
+
+                </div>
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="submit"
+                    class="registration-submit">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    রেজিস্ট্রেশন নিশ্চিত করুন
+
+                </button>
+
+            </form>
+
+
+            <!-- SUCCESS -->
+
+            <div
+                id="successMessage"
+                class="success-message">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                <h3>রেজিস্ট্রেশন সফল হয়েছে!</h3>
+
+                <p>
+                    আপনার তথ্য গ্রহণ করা হয়েছে।
+                    পেমেন্ট যাচাই করে আপনার অর্ডার নিশ্চিত করা হবে।
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     REGISTRATION CSS
+===================================================== -->
+
+<style>
+
+.registration-section{
+    width:100%;
+    padding:90px 20px;
+    background:linear-gradient(135deg,#f0fff6,#eef5ff);
+}
+
+.registration-wrapper{
+    max-width:1150px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:.85fr 1.15fr;
+    background:#fff;
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.13);
+}
+
+.registration-info{
+    padding:55px;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    background:linear-gradient(145deg,#087f3f,#043d22);
+}
+
+.brand-icon{
+    width:70px;
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:18px;
+    background:rgba(255,255,255,.15);
+    font-size:30px;
+    margin-bottom:25px;
+}
+
+.info-content h1{
+    font-size:42px;
+    margin-bottom:18px;
+}
+
+.info-content>p{
+    font-size:17px;
+    line-height:1.8;
+    color:#e8fff1;
+    margin-bottom:35px;
+}
+
+.info-item{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin:20px 0;
+}
+
+.info-item span{
+    width:42px;
+    height:42px;
+    min-width:42px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:#fff;
+    color:#087f3f;
+}
+
+.info-item p{
+    margin:0;
+}
+
+.registration-form-box{
+    padding:45px;
+}
+
+.form-header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:30px;
+}
+
+.form-icon{
+    width:55px;
+    height:55px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:12px;
+    background:#e8f7ef;
+    color:#087f3f;
+    font-size:23px;
+}
+
+.form-header h2{
+    margin:0;
+    color:#087f3f;
+}
+
+.form-header p{
+    margin:4px 0 0;
+    color:#777;
+}
+
+.form-section-title{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin:25px 0 17px;
+    padding-bottom:9px;
+    border-bottom:1px solid #eee;
+    color:#087f3f;
+    font-weight:bold;
+}
+
+.form-group{
+    margin-bottom:17px;
+}
+
+.form-group label{
+    display:flex;
+    align-items:center;
+    margin-bottom:7px;
+    font-weight:bold;
+    color:#333;
+}
+
+.form-group label>i{
+    width:20px;
+    margin-right:6px;
+    color:#087f3f;
+}
+
+.form-group label span{
+    color:red;
+    margin-left:4px;
+}
+
+.input-box,
+.select-box,
+.textarea-box{
+    position:relative;
+}
+
+.input-box>i,
+.select-box>i{
+    position:absolute;
+    left:14px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#087f3f;
+    z-index:2;
+    pointer-events:none;
+}
+
+.textarea-box>i{
+    position:absolute;
+    left:14px;
+    top:17px;
+    color:#087f3f;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+    width:100%;
+    padding:13px 14px;
+    border:1px solid #d5d5d5;
+    border-radius:9px;
+    outline:none;
+    font-size:15px;
+    background:#fff;
+    box-sizing:border-box;
+}
+
+.input-box input,
+.select-box select,
+.textarea-box textarea{
+    padding-left:42px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+    border-color:#087f3f;
+    box-shadow:0 0 0 3px rgba(8,127,63,.10);
+}
+
+.textarea-box textarea{
+    height:100px;
+    resize:vertical;
+}
+
+.payment-title{
+    font-weight:bold;
+    margin-bottom:12px;
+    color:#444;
+}
+
+.payment-method{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    padding:13px;
+    border-radius:10px;
+    margin-bottom:10px;
+    border:1px solid #e5e5e5;
+    background:#fafafa;
+}
+
+.payment-logo{
+    width:65px;
+    height:40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:7px;
+    font-weight:bold;
+}
+
+.bkash-logo{
+    background:#e2136e;
+    color:white;
+}
+
+.nagad-logo{
+    background:#f58220;
+    color:white;
+}
+
+.payment-details{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+}
+
+.payment-details span{
+    font-size:12px;
+    color:#777;
+}
+
+.payment-method button{
+    width:38px;
+    height:38px;
+    border:0;
+    border-radius:7px;
+    cursor:pointer;
+    background:#eee;
+}
+
+.payment-note{
+    display:flex;
+    gap:10px;
+    padding:13px;
+    margin-bottom:20px;
+    border-radius:9px;
+    background:#f4f8ff;
+    color:#555;
+}
+
+.payment-note p{
+    margin:0;
+    font-size:13px;
+}
+
+.registration-submit{
+    width:100%;
+    padding:16px;
+    border:0;
+    border-radius:9px;
+    background:#087f3f;
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.success-message{
+    display:none;
+    padding:25px;
+    margin-top:20px;
+    text-align:center;
+    border-radius:12px;
+    background:#e9f8ef;
+    color:#087f3f;
+}
+
+.success-message i{
+    font-size:45px;
+}
+
+@media(max-width:850px){
+
+    .registration-wrapper{
+        grid-template-columns:1fr;
+    }
+
+    .registration-info{
+        padding:40px 25px;
+    }
+
+    .registration-form-box{
+        padding:30px 20px;
+    }
+
+}
+
+</style>
+
+
+<!-- =====================================================
+     REGISTRATION JAVASCRIPT
+===================================================== -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    // ============================
+    // 64 DISTRICTS
+    // ============================
+
+    const districts = {
+
+        "ঢাকা": [
+            "ঢাকা",
+            "গাজীপুর",
+            "নারায়ণগঞ্জ",
+            "নরসিংদী",
+            "মুন্সিগঞ্জ",
+            "মানিকগঞ্জ",
+            "মাদারীপুর",
+            "রাজবাড়ী",
+            "ফরিদপুর",
+            "গোপালগঞ্জ",
+            "শরীয়তপুর",
+            "কিশোরগঞ্জ",
+            "টাঙ্গাইল"
+        ],
+
+        "চট্টগ্রাম": [
+            "চট্টগ্রাম",
+            "কক্সবাজার",
+            "কুমিল্লা",
+            "ফেনী",
+            "নোয়াখালী",
+            "লক্ষ্মীপুর",
+            "চাঁদপুর",
+            "ব্রাহ্মণবাড়িয়া",
+            "রাঙ্গামাটি",
+            "খাগড়াছড়ি",
+            "বান্দরবান"
+        ],
+
+        "রাজশাহী": [
+            "রাজশাহী",
+            "নাটোর",
+            "নওগাঁ",
+            "চাঁপাইনবাবগঞ্জ",
+            "পাবনা",
+            "সিরাজগঞ্জ",
+            "বগুড়া",
+            "জয়পুরহাট"
+        ],
+
+        "খুলনা": [
+            "খুলনা",
+            "বাগেরহাট",
+            "সাতক্ষীরা",
+            "যশোর",
+            "ঝিনাইদহ",
+            "মাগুরা",
+            "নড়াইল",
+            "কুষ্টিয়া",
+            "চুয়াডাঙ্গা",
+            "মেহেরপুর"
+        ],
+
+        "বরিশাল": [
+            "বরিশাল",
+            "ভোলা",
+            "পটুয়াখালী",
+            "পিরোজপুর",
+            "ঝালকাঠি",
+            "বরগুনা"
+        ],
+
+        "সিলেট": [
+            "সিলেট",
+            "মৌলভীবাজার",
+            "হবিগঞ্জ",
+            "সুনামগঞ্জ"
+        ],
+
+        "রংপুর": [
+            "রংপুর",
+            "দিনাজপুর",
+            "ঠাকুরগাঁও",
+            "পঞ্চগড়",
+            "নীলফামারী",
+            "লালমনিরহাট",
+            "কুড়িগ্রাম",
+            "গাইবান্ধা"
+        ],
+
+        "ময়মনসিংহ": [
+            "ময়মনসিংহ",
+            "জামালপুর",
+            "শেরপুর",
+            "নেত্রকোণা"
+        ]
+
+    };
+
+
+    // ============================
+    // DIVISION → DISTRICT
+    // ============================
+
+    const division = document.getElementById("division");
+    const district = document.getElementById("district");
+
+    if(division && district){
+
+        division.addEventListener("change", function(){
+
+            const selectedDivision = this.value;
+
+            district.innerHTML =
+                '<option value="">-- জেলা নির্বাচন করুন --</option>';
+
+            if(!selectedDivision){
+
+                district.disabled = true;
+                return;
+
+            }
+
+            const list = districts[selectedDivision];
+
+            if(list){
+
+                list.forEach(function(name){
+
+                    const option =
+                        document.createElement("option");
+
+                    option.value = name;
+                    option.textContent = name;
+
+                    district.appendChild(option);
+
+                });
+
+                district.disabled = false;
+
+            }
+
+        });
+
+    }
+
+
+    // ============================
+    // COPY PAYMENT NUMBER
+    // ============================
+
+    window.copyNumber = function(number){
+
+        navigator.clipboard.writeText(number)
+        .then(function(){
+
+            alert(
+                "পেমেন্ট নম্বর কপি হয়েছে: " + number
+            );
+
+        })
+        .catch(function(){
+
+            alert(
+                "পেমেন্ট নম্বর: " + number
+            );
+
+        });
+
+    };
+
+
+    // ============================
+    // FORM SUBMIT
+    // ============================
+
+    const form =
+        document.getElementById("registrationForm");
+
+    if(form){
+
+        form.addEventListener("submit", function(event){
+
+            event.preventDefault();
+
+
+            const phone =
+                document
+                .getElementById("customerPhone")
+                .value
+                .trim();
+
+
+            const phonePattern =
+                /^01[3-9]\d{8}$/;
+
+
+            if(!phonePattern.test(phone)){
+
+                alert(
+                    "সঠিক ১১ সংখ্যার বাংলাদেশি মোবাইল নম্বর দিন।"
+                );
+
+                return;
+
+            }
+
+
+            const transactionId =
+                document
+                .getElementById("transactionId")
+                .value
+                .trim();
+
+
+            if(transactionId.length < 4){
+
+                alert(
+                    "সঠিক Transaction ID দিন।"
+                );
+
+                return;
+
+            }
+
+
+            form.style.display = "none";
+
+
+            const success =
+                document.getElementById("successMessage");
+
+            success.style.display = "block";
+
+
+            success.scrollIntoView({
+
+                behavior:"smooth",
+
+                block:"center"
+
+            });
+
+        });
+
+    }
+
+});
+
+</script>
+
+
+
+
+
+</body>
+</html>
